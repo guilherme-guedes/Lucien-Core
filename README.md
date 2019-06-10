@@ -1,3 +1,3 @@
-Lucien-Core
+<b>Lucien-Core</b>
 
-Bilioteca de funções Powershell para atuomatização e execução de tarefas
+<p>Bilioteca de funções Powershell para automatização e execução de tarefas</p>
