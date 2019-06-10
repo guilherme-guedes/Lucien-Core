@@ -1,33 +1,24 @@
-using module .\LucienAbstractAction.psm1
+using module .\AbstractExpressoesChave.psm1
+using module ..\Commands\LucienAbstractAction.psm1
+using module ..\Commands\DeployAction.psm1
 
-# Put all programs and files to start wioth this command
+class DeployExpressoesChave : AbstractExpressoesChave
+{
+    DeployExpressoesChave ()
+    {
+		$this.ExpressoesChave =  "deploy", "publish", "dpl"
+    }
 
-class StartupAction : LucienAbstractAction
-{		
-	StartupAction()
-	{
-	}	
-	
-	[Void] Action($obj)
-	{
-		#files and folders
-		invoke-item "c:\custom_folder\"
-		invoke-item " C:\custom_foler\file.txt"
-		
-		# #Google Chrome
-		Start-Process chrome "http://google.com.br"
-		Start-Sleep -Milliseconds 150		
-		Start-Process chrome -incognito "http://google.com.br"
-		Start-Sleep -Milliseconds 150	
-
-		.\lock.bat
-	}
+	[LucienAbstractAction] Action()
+    {
+        return [DeployAction]::new()
+    }
 }
 # SIG # Begin signature block
 # MIIEMwYJKoZIhvcNAQcCoIIEJDCCBCACAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUTf61GU58HDVraFOlv9EoP0Ck
-# 9nCgggI9MIICOTCCAaagAwIBAgIQRB/Kygt5R6lMUNDyBxYGuTAJBgUrDgMCHQUA
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUSXqpF62vtqPTHsltNSN984/A
+# VMCgggI9MIICOTCCAaagAwIBAgIQRB/Kygt5R6lMUNDyBxYGuTAJBgUrDgMCHQUA
 # MCwxKjAoBgNVBAMTIVBvd2VyU2hlbGwgTG9jYWwgQ2VydGlmaWNhdGUgUm9vdDAe
 # Fw0xODA3MTExMzQ3MDdaFw0zOTEyMzEyMzU5NTlaMBoxGDAWBgNVBAMTD1Bvd2Vy
 # U2hlbGwgVXNlcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA7D/xKdyakjTJ
@@ -43,8 +34,8 @@ class StartupAction : LucienAbstractAction
 # cnRpZmljYXRlIFJvb3QCEEQfysoLeUepTFDQ8gcWBrkwCQYFKw4DAhoFAKB4MBgG
 # CisGAQQBgjcCAQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcC
 # AQQwHAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkEMRYE
-# FIVIzIa/9VLH9IgZdSJ9EoncVLQ5MA0GCSqGSIb3DQEBAQUABIGAF6BXmIs48Htr
-# k5fOR8Yx1p6Y2vuJSM8pVvImbCHGvZj6cHSprM/TEVd4QLwwsN52vOX4Ai+WE4i/
-# tKE45WqqhwMyfhUdkP9TFJ9V+qihsoWz+2IJtdm7z03R79B9dDWl7ojFdgSgjNkE
-# 3mNfgNZ2Lp/wJdtQ3n1Z4Tcbt6db0zc=
+# FJzAwwrof+QSpqFE470vKTTz3H11MA0GCSqGSIb3DQEBAQUABIGAofH+GmGCJoQa
+# +HIg4UGgCCoXOSHyu0vy/JtfDH1Q8wOJpZubaObg33Wtrk+VHsJu++05115jANhR
+# sZkyfgWYu0v6D71KCK8HGd7l6o+9hqTr+aXDmEMNOnff8nECWPAXP26fY+QXjI90
+# cVWKfzOStMiTWl5CUH6Oi17+vHDV4mw=
 # SIG # End signature block

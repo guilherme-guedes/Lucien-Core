@@ -1,6 +1,6 @@
 @echo off
 
-set lucien="C:\DevUtils\_Programas\Lucien\Main.ps1"
+set lucien=cd
 set argumento=%*
 shift
 
