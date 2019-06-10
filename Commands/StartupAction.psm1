@@ -1,5 +1,7 @@
 using module .\LucienAbstractAction.psm1
 
+# Put all programs and files to start wioth this command
+
 class StartupAction : LucienAbstractAction
 {		
 	StartupAction()

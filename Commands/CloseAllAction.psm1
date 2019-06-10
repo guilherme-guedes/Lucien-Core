@@ -1,5 +1,7 @@
 using module .\LucienAbstractAction.psm1
 
+# Put all proccess to close 'Stop-Process -Name "{proccess-name}" -Force'
+
 # parametros 
 # shutdown:
 #   s | shutdown - (desligar)
