@@ -1,20 +1,44 @@
 # Para novas actions adicionar a importação do modulo de expressões e action
 using module .\Expressoes\AbstractExpressoesChave.psm1
 using module .\Commands\LucienAbstractAction.psm1
+using module .\Commands\QuitAction.psm1
+using module .\Commands\TestaEzoopAction.psm1
 using module .\Commands\ListFunctionsAction.psm1
 using module .\Commands\OpenUrlAction.psm1
 using module .\Commands\StartupAction.psm1
 using module .\Commands\SaveOnEvernoteAction.psm1
 using module .\Commands\CloseAllAction.psm1
 using module .\Commands\ShowGenericWindowAction.psm1
+using module .\Commands\DeployEzoopAction.psm1
+using module .\Commands\ShowDietaAction.psm1
 using module .\Commands\SlackMessageAction.psm1
+using module .\Commands\GeradorTokenGymPassAction.psm1
+using module .\Commands\AtualizaApisSpiceOnAction.psm1
+using module .\Commands\StartCheckMatrizConnectionAction.psm1
+using module .\Commands\StopCheckMatrizConnectionAction.psm1
+using module .\Commands\GetIPSonicWallAction.psm1
+using module .\Commands\DeploySpiceOnAction.psm1
+using module .\Commands\SlackCleanerAction.psm1
+using module .\Commands\ConnectCRMAction.psm1
+using module .\Expressoes\QuitExpressoesChave.psm1
+using module .\Expressoes\TestaEzoopExpressoesChave.psm1
 using module .\Expressoes\ListFunctionsExpressoesChave.psm1
 using module .\Expressoes\OpenUrlExpressoesChave.psm1
 using module .\Expressoes\StartupExpressoesChave.psm1
 using module .\Expressoes\SaveOnEvernoteExpressoesChave.psm1
 using module .\Expressoes\CloseAllExpressoesChave.psm1
 using module .\Expressoes\ShowGenericWindowExpressoesChave.psm1
+using module .\Expressoes\DeployEzoopExpressoesChave.psm1
+using module .\Expressoes\ShowDietaExpressoesChave.psm1
 using module .\Expressoes\SlackMessageExpressoesChave.psm1
+using module .\Expressoes\GeradorTokenGymPassChave.psm1
+using module .\Expressoes\AtualizaApisSpiceOnExpressoesChave.psm1
+using module .\Expressoes\StartCheckMatrizConnectionExpressoesChave.psm1
+using module .\Expressoes\StopCheckMatrizConnectionExpressoesChave.psm1
+using module .\Expressoes\GetIPSonicWallExpressoesChave.psm1
+using module .\Expressoes\DeploySpiceOnExpressoesChave.psm1
+using module .\Expressoes\SlackCleanerExpressoesChave.psm1
+using module .\Expressoes\ConnectCRMExpressoesChave.psm1
 
 class Preditor{
 
@@ -50,12 +74,10 @@ class Preditor{
         return (New-Object -TypeName "$Type")
     }
 	
-	[System.Collections.ArrayList] ObterTiposClasse($folders)
+	[System.Collections.ArrayList] ObterTiposClasse($folder)
 	{
-		#implementar multiplas pastas folder = folders
-	
 		$retorno = New-Object System.Collections.ArrayList<String> 		
-		$directory = New-Object System.IO.DirectoryInfo($PSScriptRoot + $folders)
+		$directory = New-Object System.IO.DirectoryInfo($PSScriptRoot + $folder)
 		
 		$files = $directory.GetFiles()	
 		For ($i = 0; $i -lt $files.Length; $i++)
@@ -126,27 +148,35 @@ class Preditor{
 	#endregion
 }
 # SIG # Begin signature block
-# MIIEMwYJKoZIhvcNAQcCoIIEJDCCBCACAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
+# MIIFsgYJKoZIhvcNAQcCoIIFozCCBZ8CAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUhyWzyDeKC1q42Q1B1FRnIj7n
-# KrCgggI9MIICOTCCAaagAwIBAgIQRB/Kygt5R6lMUNDyBxYGuTAJBgUrDgMCHQUA
-# MCwxKjAoBgNVBAMTIVBvd2VyU2hlbGwgTG9jYWwgQ2VydGlmaWNhdGUgUm9vdDAe
-# Fw0xODA3MTExMzQ3MDdaFw0zOTEyMzEyMzU5NTlaMBoxGDAWBgNVBAMTD1Bvd2Vy
-# U2hlbGwgVXNlcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA7D/xKdyakjTJ
-# PaF6vFcVorNLkQziZWqdVSzuHSV0+mV2IFNIXWh+2nRBHXxEM6nzgrXurPfTfjTN
-# F1hbzIv45ePY9yku5qItz++ORBhEjD0eK0oul55KQ2PCyjg/ivTndueyNiF3/Yq5
-# MFezuB4JizU/yHY9P7nrPh9ZVGWAGJECAwEAAaN2MHQwEwYDVR0lBAwwCgYIKwYB
-# BQUHAwMwXQYDVR0BBFYwVIAQ9d6IouSOM/0qPyfJRpkQz6EuMCwxKjAoBgNVBAMT
-# IVBvd2VyU2hlbGwgTG9jYWwgQ2VydGlmaWNhdGUgUm9vdIIQ6Cu+6PTfwJlNzluZ
-# 5OEx4jAJBgUrDgMCHQUAA4GBAB6jjoZ6cUVyiT7HlAcihtd3a09i3SHRVkHtP6Xo
-# Ottw7r8wNcIpc+EKpSwmy2Sg3UehDGNwo2Rikebc3D+/0DrbPN49m1AhhsqQ3wM4
-# +kfuJlXxktCiocGpDq9nzF395DsZHvHj5PUmXvrajWNK3igNEy9v0XjV1xbjUCPv
-# vgqeMYIBYDCCAVwCAQEwQDAsMSowKAYDVQQDEyFQb3dlclNoZWxsIExvY2FsIENl
-# cnRpZmljYXRlIFJvb3QCEEQfysoLeUepTFDQ8gcWBrkwCQYFKw4DAhoFAKB4MBgG
-# CisGAQQBgjcCAQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcC
-# AQQwHAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkEMRYE
-# FLXb2YSw7/BMtg2AL2ipKm2cNAfTMA0GCSqGSIb3DQEBAQUABIGAuol5QkrWfTZn
-# /SRIuu1YSODdgrEUjp5Pj8fnuI6CR3eLpdtOy+krtPgjU1tJZRoESCJWGDb6tAoP
-# An/kLXu14lCXKIz3/uj1kUSX/h3ZpPngmqDZ7OlF1aqZzUxLF73MO7oL9UDW8v7p
-# DlAbNiw6HORU9qIwErs9qYxtuG9yY6A=
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUNmcgkU4dFkDQZKIXHnd0E3Gn
+# DS6gggM/MIIDOzCCAiOgAwIBAgIQJd8GuPlQ+L5F1zA5qgPYBTANBgkqhkiG9w0B
+# AQsFADAoMSYwJAYDVQQDDB1MdWNpZW4gTG9jYWwgQ2VydGlmaWNhdGUgUm9vdDAe
+# Fw0xOTA5MjcxNzAxMTRaFw0zOTA5MjcxNzExMTVaMCIxIDAeBgNVBAMMF0x1Y2ll
+# biBVc2VyIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+# AQEA/bRcwnn3slVq3KXBXtA6NibrEXZmuh3Q2q2FqlLeF1wU9WUsp5ZPuUuYhYUr
+# 8iRmlT5IMJ/qDPgGoVxtBoHHcFylXV8a6wzV7mnDqvq7yQXaPSBHm35StcGV4sH7
+# Hf1L5xh+S633wLZtZzQhCPar/JoV5U1VW/cMWlBFjnlAAi+LLGYLaxgelLuGEJ/H
+# xZqbnE4HmHXibpJQY18VaYKr9iB3r+bPrC02dcRwBav2mC1wF+1h+uIR4wYEkj2C
+# LdVfKkBCDLQOheHYaZRjclZ+tpRWEDihV5jaXrYR+l+Hu4BAk09rglZo7q1fPsp2
+# rEtd7cbwHf7Uu2P/kr2mj6bCxQIDAQABo2cwZTAOBgNVHQ8BAf8EBAMCB4AwEwYD
+# VR0lBAwwCgYIKwYBBQUHAwMwHwYDVR0jBBgwFoAU5jjoZF20n16Ysi9x+FX7j0fh
+# liMwHQYDVR0OBBYEFP6La6vfOXC7b7MvHWRs4C4hdJcxMA0GCSqGSIb3DQEBCwUA
+# A4IBAQCb4NULSz04sBXpLeAysNGE+0zBZBgPJBI6vixH8og/P0M92fRH8GjpEU71
+# yZkqH+FSvqgJmnOv81lK+ULJcweXMBdLmr8/hdSi5ucrEiMRJ3XjxH5bnla2tM+9
+# i5p8RKEZvubOD45yqlL4rs8L+ceHwlFBXN+Op4i9+QvXnU2WiUy8CNk8OwYhSjWX
+# qcHRgyhRFVwis0YAngCIXzLkxNjOgFM3HBLDa7AAxvcPTpuzYx3kurNAYvGbFiFq
+# vouCKBFtKZWSSHtCB3h2ffF1jheuw7JkmTrEgqcT/wGsozdy995khEOApFnM339s
+# IaGUNBxNlj1aEp7NSkJt7GBt8yWQMYIB3TCCAdkCAQEwPDAoMSYwJAYDVQQDDB1M
+# dWNpZW4gTG9jYWwgQ2VydGlmaWNhdGUgUm9vdAIQJd8GuPlQ+L5F1zA5qgPYBTAJ
+# BgUrDgMCGgUAoHgwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkqhkiG9w0B
+# CQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAj
+# BgkqhkiG9w0BCQQxFgQUw6UZEKKB+4AORZhu/FQMYjBEI4gwDQYJKoZIhvcNAQEB
+# BQAEggEABlVqvQ9xl9RSNjtV++Q81Ve19KFjRQ09V0lTJ8DCuhfY4DJwZBNHVqzX
+# W9lLNo2GZw8oKuKvXk8LT+h+I/f09yw+fFE9keNj6MJWSHeZ/mBHK3ay4rb0+qK9
+# zfmmF520Fixm8nkym9krIlf39YUf4hbSujCbsGIH4zFnguTwphYGNwEMN0f3v8vr
+# QPhvxdJcVmRzkYLnkOoniMCnj0FLfMwPGVsPqII5AfiJML9tdh9OsFmUM4jJqYQY
+# XkYgwCPuWn3H+qmoRyPxcE5ZWneQzjEsL51x2So1Bw51z7XxRlH/u4Eu3e2DTn1x
+# uZOz7jQC0kZzWsdszJBhkdKlC1VDWw==
 # SIG # End signature block
