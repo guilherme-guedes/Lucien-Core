@@ -5,10 +5,10 @@ $pwd = ConvertTo-SecureString "1234567" -AsPlainText -Force
 
 $certRoot = New-SelfSignedCertificate -Subject "CN=Lucien Local Certificate Root" -FriendlyName "Lucien CR" -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign  -NotAfter (Get-Date).AddYears(20) -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2,1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.4,1.3.6.1.5.5.7.3.3,1.3.6.1.5.5.7.3.8,1.3.6.1.5.5.7.3.1","2.5.29.19={critical}{text}ca=TRUE") -KeyExportPolicy Exportable
 
-$directory = Get-Item -Path "c:/certs"
-if($null -eq $directory){
-    mkdir "c:/certs"
-}
+# $directory = Get-Item -Path "c:/certs"
+# if($null -eq $directory){
+#     mkdir "c:/certs"
+# }
 
 $store = get-item Cert:\LocalMachine\Root
 $store.Open("ReadWrite")
@@ -22,8 +22,8 @@ New-SelfSignedCertificate -Subject "CN=Lucien User Certificate" -FriendlyName "L
 # SIG # Begin signature block
 # MIIFsgYJKoZIhvcNAQcCoIIFozCCBZ8CAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUnxE2S+RS87de63nejkt5ULaf
-# MBCgggM/MIIDOzCCAiOgAwIBAgIQJd8GuPlQ+L5F1zA5qgPYBTANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUUS/I+9dMblGH3iJ/SeN/wXgs
+# kCigggM/MIIDOzCCAiOgAwIBAgIQJd8GuPlQ+L5F1zA5qgPYBTANBgkqhkiG9w0B
 # AQsFADAoMSYwJAYDVQQDDB1MdWNpZW4gTG9jYWwgQ2VydGlmaWNhdGUgUm9vdDAe
 # Fw0xOTA5MjcxNzAxMTRaFw0zOTA5MjcxNzExMTVaMCIxIDAeBgNVBAMMF0x1Y2ll
 # biBVc2VyIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
@@ -44,11 +44,11 @@ New-SelfSignedCertificate -Subject "CN=Lucien User Certificate" -FriendlyName "L
 # dWNpZW4gTG9jYWwgQ2VydGlmaWNhdGUgUm9vdAIQJd8GuPlQ+L5F1zA5qgPYBTAJ
 # BgUrDgMCGgUAoHgwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkqhkiG9w0B
 # CQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAj
-# BgkqhkiG9w0BCQQxFgQUEBojvgR5jGukI4tyP9oiBhMAjtswDQYJKoZIhvcNAQEB
-# BQAEggEATcVIhTy8ldlxTM0u+rgtABDeByBTre1xwGVkDyJyBSae832bZCM0/1/7
-# RS7OZzW0CZa3SLXi3ZOiUvkwLs/NSfrLU4OJxD5ELHl9EFqwap0vaPkFZV2A91gO
-# J03yj2bphyCcrx5HdcJ/E/ZLnS2uA/WTCXvGukd/dZMVNw+MVui77SDejBgJz/ko
-# 1vTX1pQR1hTPqfKf1B7uD+uPIU9Tni8byDMBgcSDHodit/JrJiACIig7JI8jktpv
-# M3hk2YtsUKEkW0N3dPXi0ZdJDeozYp6Ea4w/EKMWmnIwOR11rRQTFVJJe7q+vKKE
-# 9AgIdXVWnqmD/jCdKmayZQnZf+3+dg==
+# BgkqhkiG9w0BCQQxFgQUM+5E/mJRLEu8JueG3FbrrQKM3IEwDQYJKoZIhvcNAQEB
+# BQAEggEAgrksGQmBYA9anVJyqdxyTrZJSXFL0ANjkMjJnP/nFJJp+iN5YMpi+CpX
+# ZvvfP2YEEykNzIeIBP4yyPMRaMvO5e2nVZVhP/811bckr9eoanY9DSX+hJ4s5sXy
+# W6qzxl65/ZcftZMZdZiX/01k1yaspn3NsEUC1QQZJO7k9T5F5a6Z4SDDc4GTU8IC
+# FVbTGJA2iatxPkYn0SHhb6hl3gg269DH556ev7YnZRg7GEag1bibkuJpHKABJ69R
+# sxcFjApzxPMPZU4FGMcxSr2/8Bkqgutlp/uUpQ4RpA11vuujJzix53i3tcwXYKDN
+# Q5TzQdH9Z0VNSdGmnbf/GZFnZKj9Fw==
 # SIG # End signature block
